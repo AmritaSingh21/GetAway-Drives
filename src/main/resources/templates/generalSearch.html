@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Get Away drives</title>
+
+    <link rel="stylesheet" href="" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.8.1/css/all.css}">
+    <link rel="stylesheet"
+          th:href="@{https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css}">
+
+</head>
+<body>
+
+<!-- header -->
+<header id="everything">
+    <a th:href="@{home}" class="logo"><img src="" th:src="@{/images/gtr.png}" alt = "logo"></a>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+
+    <div class="header-btn">
+        <a th:href="@{Register}" class="sign-up" id="signUp">Sign Up</a>
+        <a th:href="@{loginPage}" class="sign-in" id="signIn">Sign In</a>
+        <a th:href="@{userProfile}" id="uProfile" style="font-size:1.3rem; display: none;"><i class="fas fa-user"></i></a>
+    </div>
+</header>
+
+<div class="space" style="height:60px;">
+    <p></p>
+</div>
+
+<script th:inline="javascript">
+    let isSet = [[${session.userId}]];
+    if (isSet){
+        document.getElementById("uProfile").style.display="inline-block";
+        document.getElementById("signIn").style.display="none";
+        document.getElementById("signUp").style.display="none";
+
+    }
+</script>
+
+<!--Ride-->
+
+<section class="services" id="services">
+    <div class="heading">
+        <span>Search Results</span>
+    </div>
+    <div class="services-container">
+        <div class="box" th:each="p:${list_cars}">
+            <div class="box-img">
+                <img alt="img1" th:src="@{getVehiclePhoto(id=${p.getId()})}">
+            </div>
+            <p th:text="${p.getModel()}" style="width: fit-content"></p>
+            <h3 th:text="${p.getBuild()}"></h3>
+            <h2 th:text="'$'+${p.getPrice()}+'/day'"></h2>
+            <a th:href="@{details(id=${p.getId()},startDate=${startDate},endDate=${endDate})}" class="btn">Rent Now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="copyright" >
+    <p >&#169; GetAwayDrives All Rights Reserved.</p>
+    <div class="social" >
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+    </div>
+</div>
+
+<!-- js  -->
+<script src = "main.js"></script>
+</body>
+</html>

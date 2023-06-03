@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/listCar.css}" />
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.8.1/css/all.css}">
+    <script src="main.js" defer></script>
+    <title>Vehicle details</title>
+</head>
+<body>
+<header id="everything">
+    <a th:href="@{home}" class="logo"><img src="images/gtr.png" alt = "logo"></a>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+    <ul class="navbar">
+
+    </ul>
+    <div class="header-btn">
+        <a th:href="@{Register}" class="sign-up" id="signUp">Sign Up</a>
+        <a th:href="@{loginPage}" class="sign-in" id="signIn">Sign In</a>
+        <a th:href="@{userProfile}" id="uProfile" style="font-size:1.3rem; display: none;"><i class="fas fa-user"></i></a>
+    </div>
+</header>
+
+<div class="space">
+    <p></p>
+</div>
+<script th:inline="javascript">
+    let isSet = [[${session.userId}]];
+    if (isSet){
+        document.getElementById("uProfile").style.display="inline-block";
+        document.getElementById("signIn").style.display="none";
+        document.getElementById("signUp").style.display="none";
+    }
+</script>
+<div class="container" th:each="p:${details}">
+
+    <div class="img">
+        <img alt="img1" th:src="@{getVehiclePhoto(id=${p.getId()})}">
+    </div>
+
+    <div class="form" >
+        <h1 class="title" th:text="${p.getModel()}">Title</h1>
+        <p style="font-weight: bold">Price: <span th:text="'$'+${p.getPrice()}+'/day'" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">Build: <span th:text="${p.getBuild()}" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">Max trip Duration: <span th:text="${p.getLongestTripDur()}+' days'" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">Min trip Duration: <span th:text="${p.getShortestTripDur()}+' days'" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">Year: <span th:text="${p.getYear()}" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">Location: <span th:text="${p.getCity()}+', '+${p.getProvince()}" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">KMs driven: <span th:text="${p.getOdometer()}+' Km'" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">License Plate: <span th:text="${p.getLicensePlateNumber()}" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">Fuel Consumption: <span th:text="${p.getFuelConsumption()}+' ltr/100 Km'" style="font-weight: normal"></span></p>
+        <p style="font-weight: bold">Transmission Type: <span th:text="${p.getTransmissionType()}" style="font-weight: normal"></span></p>
+        <div class="">
+            <a th:href="@{rent(id=${p.getId()},startDate=${startDate},endDate=${endDate})}" class="btn btn-prev" onclick="alert('Thank you for using our services!')">Rent</a>
+        </div>
+        <div class="errors">
+            <p th:text="${err}" style="color: red;font-weight: bold;text-align: center;"></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

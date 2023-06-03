@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Get Away drives</title>
+
+    <link rel="stylesheet" href="" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.8.1/css/all.css}">
+
+    <link rel="stylesheet"
+          th:href="@{https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css}">
+
+</head>
+<body>
+
+<!-- header -->
+<header id="everything">
+    <a th:href="@{home}" class="logo"><img  th:src="@{/images/gtr.png}" alt = "logo"></a>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+    <ul class="navbar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#ride">Ride</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <div class="header-btn">
+        <a th:href="@{listCar}" class="list_car">List Car</a>
+        <span th:text="'Welcome, '+ ${session.firstName}+'!'"  style="width: fit-content; padding: 5px;margin:auto;"></span>
+        <a th:href="@{userProfile}" style="font-size:1.3rem;"><i class="fas fa-user"></i></a>
+
+    </div>
+</header>
+
+<section class="home" id="home">
+
+    <form action="get"  th:action="@{search}" style="width: 70%">
+        <div class="input-box">
+            <span>Location</span>
+            <input type="search" name="keyword"  placeholder="Enter Location" required>
+        </div>
+        <div class="input-box">
+            <span>Pick-Up Date</span>
+            <input type="date" name="startDate" required>
+        </div>
+        <div class="input-box">
+            <span>Return-Date</span>
+            <input type="date" name="endDate" required>
+        </div>
+        <input type="submit" name="" class="btn">
+        <div class="errors" id="error1" style="color: red;font-weight: bold;width: 100%">
+            <p th:text="${err}" style="text-align: center"></p>
+        </div>
+    </form>
+</section>
+
+
+<!--Ride-->
+<section class="ride" id="ride">
+    <div id="divCheckbox" style="display: none;">
+        <img src="/static/bg4.jpg" >
+    </div>
+    <div class="heading">
+        <span>How it works</span>
+        <h1>Rent with 3 easy steps</h1>
+    </div>
+    <div class="ride-container" style="grid-template-columns: 33% 33% 33%;">
+        <div class="box">
+            <i class='bx bxs-map'></i>
+            <h2>Choose A Location</h2>
+            <p>Down the street or across the country, find the perfect vehicle for your next adventure.</p>
+        </div>
+        <div class="box">
+            <i class='bx bxs-calendar-check'></i>
+            <h2>Pick-up Date</h2>
+            <p>Choose a vehicle that best suits you and your time and your it will be ready for you.</p>
+        </div>
+        <div class="box">
+            <i class='bx bxs-calendar-star' ></i>
+            <h2>Book A Car</h2>
+            <p>Have the fun of your life during the trip that you wanted for so long. Happy Journey!</p>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="heading">
+        <span>Best Services</span>
+        <h1>Explore Out Top Deals <br>From Top Rated Users</h1>
+    </div>
+    <div class="services-container">
+        <div class="box">
+            <div class="box-img">
+                <img th:src="@{/images/build.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <a th:href="@{byBuild}" class="btn">Search by build</a>
+        </div>
+
+        <div class="box">
+            <div class="box-img">
+                <img th:src="@{/images/type.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <a th:href="@{types}" class="btn">Search by type</a>
+        </div>
+
+        <div class="box">
+            <div class="box-img">
+                <img th:src="@{/images/rating.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <a href="#" class="btn">Search by Ratings</a>
+        </div>
+    </div>
+
+</section>
+<section class="reviews" id="reviews">
+    <div class="heading">
+        <span>Reviews</span>
+        <h1>What our customers have to say</h1>
+    </div>
+    <div class="reviews-container" style="grid-template-columns: 33% 33% 33%;">
+        <div class="box">
+            <div class="rev-img">
+                <img src="rev1.jpg" th:src="@{/images/rev1.jpg}" alt="">
+            </div>
+            <h2>Alex K</h2>
+            <div class="stars">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star-half'></i>
+            </div>
+            <p>Last minute reservation and great service!</p>
+        </div>
+        <div class="box">
+            <div class="rev-img">
+                <img src="rev2.jpg" th:src="@{/images/rev2.jpg}" alt="">
+            </div>
+            <h2>John D</h2>
+            <div class="stars">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star-half'></i>
+
+            </div>
+            <p>Offers great service and easiest experience compared to all other rental service.</p>
+        </div>
+        <div class="box">
+            <div class="rev-img">
+                <img src="rev3.jpg" th:src="@{/images/rev3.jpg}" alt="">
+            </div>
+            <h2>Mike S</h2>
+            <div class="stars">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star-half'></i>
+
+            </div>
+            <p>I would definitely recommend this service to my friends and family.</p>
+        </div>
+    </div>
+</section>
+<div class="copyright">
+    <p>&#169; GetAwayDrives All Rights Reserved.</p>
+    <div class="social">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+    </div>
+</div>
+
+<!-- js  -->
+<script src = "main.js"></script>
+</body>
+</html>

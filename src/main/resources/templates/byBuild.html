@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/builds.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.8.1/css/all.css}">
+    <title>Search by builds</title>
+    <script>
+        function showSearch(){
+            document.getElementById("home2").style.display="flex";
+            document.getElementById("searchForm").focus();
+            document.getElementById("location").focus();
+
+            document.body.scrollIntoView(0);
+
+        }
+        function showCars(){
+            document.getElementById("home2").style.display="none";
+            document.getElementById("cars").style.display="grid";
+            document.getElementById("cars").focus();
+        }
+    </script>
+</head>
+<body>
+<header id="everything">
+    <a th:href="@{home}" class="logo"><img th:src="@{/images/gtr.png}" alt = "logo"></a>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+    <ul class="navbar">
+
+    </ul>
+    <div class="header-btn">
+        <a th:href="@{Register}" class="sign-up" id="signUp">Sign Up</a>
+        <a th:href="@{loginPage}" class="sign-in" id="signIn">Sign In</a>
+        <a th:href="@{userProfile}" id="uProfile" style="font-size:1.3rem; display: none;"><i class="fas fa-user"></i></a>
+    </div>
+</header>
+<div class="space">
+    <p></p>
+</div>
+
+<script th:inline="javascript">
+    let isSet = [[${session.userId}]];
+    if (isSet){
+        document.getElementById("uProfile").style.display="inline-block";
+        document.getElementById("signIn").style.display="none";
+        document.getElementById("signUp").style.display="none";
+    }
+</script>
+
+<section class="services" id="services">
+    <div class="heading">
+        <span>Browse By Builds</span>
+        <h1>Find the vehicle perfect for you <br>From most popular builds </h1>
+    </div>
+
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+
+    <div class="services-container2">
+
+        <div class="box" id="Mercedes">
+            <div class="box-img">
+                <img th:src="@{/images/mercedes.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <h3>Mercedes</h3>
+            <h2></h2>
+            <button class="btn" value="Mercedes" onclick="showSearch()">Rent Now</button>
+        </div>
+
+        <div class="box" id="BMW">
+            <div class="box-img">
+                <img th:src="@{/images/bmw.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <h3>BMW</h3>
+            <h2></h2>
+            <button class="btn" value="BMW" onclick="showSearch()">Rent Now</button>
+        </div>
+
+        <div class="box" id="Jeep">
+            <div class="box-img">
+                <img th:src="@{/images/jeep.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <h3>JEEP</h3>
+            <h2></h2>
+            <button class="btn" value="Jeep" onclick="showSearch()">Rent Now</button>
+        </div>
+        <div class="box" id="Honda">
+            <div class="box-img">
+                <img th:src="@{/images/honda.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <h3>Honda</h3>
+            <h2></h2>
+            <button class="btn" value="Honda" onclick="showSearch()">Rent Now</button>
+        </div>
+        <div class="box" id="Subaru">
+            <div class="box-img">
+                <img th:src="@{/images/subaru.jpg}" alt="img1">
+            </div>
+            <h2></h2>
+            <h3>Subaru</h3>
+            <h2></h2>
+            <button class="btn" value="Subaru" onclick="showSearch()">Rent Now</button>
+        </div>
+        <script type="text/javascript">
+            $("button").click(function() {
+                var vType = document.getElementById("vehBuild");
+                var fired_button = $(this).val();
+                document.querySelector('input[name="build"]').value = fired_button;
+                document.getElementById("text").style.display = "block";
+                document.getElementById("theCar").textContent=fired_button;
+                document.getElementById("cars").style.display="none";
+
+                if(fired_button=="Mercedes") {
+                    var ignoreClickOnMeElement = document.getElementById('Mercedes');
+                    ignoreClickOnMeElement.style.transform="scale(1.05)";
+                    ignoreClickOnMeElement.style.border="1px solid blue";
+
+                    document.addEventListener('click', function(event) {
+                        var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+                        if (!isClickInsideElement) {
+                            //Do something click is outside specified element
+                            ignoreClickOnMeElement.style.transform="scale(1)";
+                            ignoreClickOnMeElement.style.border="none";
+                        }
+                    });
+                }
+
+                if(fired_button=="BMW") {
+                    var ignoreClickOnMeElement = document.getElementById('BMW');
+                    ignoreClickOnMeElement.style.transform="scale(1.05)";
+                    ignoreClickOnMeElement.style.border="1px solid blue";
+                    document.addEventListener('click', function(event) {
+                        var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+                        if (!isClickInsideElement) {
+                            //Do something click is outside specified element
+                            ignoreClickOnMeElement.style.transform="scale(1)";
+                            ignoreClickOnMeElement.style.border="none";
+
+                        }
+                    });
+                }
+
+                if(fired_button=="Jeep") {
+                    var ignoreClickOnMeElement = document.getElementById('Jeep');
+                    ignoreClickOnMeElement.style.transform="scale(1.05)";
+                    ignoreClickOnMeElement.style.border="1px solid blue";
+
+                    document.addEventListener('click', function(event) {
+                        var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+                        if (!isClickInsideElement) {
+                            //Do something click is outside specified element
+                            ignoreClickOnMeElement.style.transform="scale(1)";
+                            ignoreClickOnMeElement.style.border="none";
+
+                        }
+                    });
+                }
+
+                if(fired_button=="Honda") {
+                    var ignoreClickOnMeElement = document.getElementById('Honda');
+                    ignoreClickOnMeElement.style.transform="scale(1.05)";
+                    ignoreClickOnMeElement.style.border="1px solid blue";
+
+                    document.addEventListener('click', function(event) {
+                        var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+                        if (!isClickInsideElement) {
+                            //Do something click is outside specified element
+                            ignoreClickOnMeElement.style.transform="scale(1)";
+                            ignoreClickOnMeElement.style.border="none";
+
+                        }
+                    });
+                }
+
+                if(fired_button=="Subaru") {
+                    var ignoreClickOnMeElement = document.getElementById('Subaru');
+                    ignoreClickOnMeElement.style.transform="scale(1.05)";
+                    ignoreClickOnMeElement.style.border="1px solid blue";
+
+                    document.addEventListener('click', function(event) {
+                        var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+                        if (!isClickInsideElement) {
+                            //Do something click is outside specified element
+                            ignoreClickOnMeElement.style.transform="scale(1)";
+                            ignoreClickOnMeElement.style.border="none";
+
+                        }
+                    });
+                }
+            });
+        </script>
+    </div>
+</section>
+
+<div class="text" id="text">
+    <h1>Rent <span id="theCar">abc</span> nearby.</h1>
+</div>
+
+<section class="home2" id="home2" style="display: none" >
+    <form th:action="@{search_builds}" id="searchForm" tabindex="0">
+        <div class="input-box">
+            <span>Location</span>
+            <input type="search" name="city" id="location" placeholder="Enter City" required>
+        </div>
+        <div class="input-box">
+            <span>Pick-Up Date</span>
+            <input type="date" name="startDate" id="" required>
+        </div>
+        <div class="input-box">
+            <span>Return-Date</span>
+            <input type="date" name="endDate" id="a" required>
+        </div>
+        <div class="errors" style="color: red;font-weight: bold;width: 100%">
+            <p th:text="${err}" style="text-align: center"></p>
+        </div>
+        <input type="submit" name="" class="btn" value="Submit">
+        <input type="hidden" name="build" id="vehBuild" value="">
+    </form>
+</section>
+
+<section class="cars" id="cars" tabindex="-1">
+    <div class="heading">
+        <span>Search Results</span>
+        <!-- <h1>Popular Deals <br>From Top Rated Owners</h1> -->
+    </div>
+    <div class="cars-container">
+        <div class="box" th:each="p:${by_build}">
+            <div class="box-img">
+                <img alt="img1" th:src="@{getVehiclePhoto(id=${p.getId()})}">
+            </div>
+            <p th:text="${p.getModel()}" style="width: fit-content"></p>
+            <h3 th:text="${p.getBuild()}"></h3>
+            <h2 th:text="'$'+${p.getPrice()}+'/day'"></h2>
+            <a th:href="@{details(id=${p.getId()},startDate=${startDate},endDate=${endDate})}" class="btn">Rent Now</a>
+        </div>
+    </div>
+
+</section>
+
+
+<script th:inline="javascript">
+    let isSearched = [[${searched}]];
+    if (String(isSearched)==="yes"){
+        showCars();
+    }
+</script>
+
+</body>
+</html>

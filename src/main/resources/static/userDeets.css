@@ -1,0 +1,49 @@
+body{
+    background-image: url(sky.jpg);
+}
+
+.card{
+    border:none;
+
+    position:relative;
+    overflow:hidden;
+    /* border-radius:8px; */
+
+}
+
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    background:white;
+    padding:1% 5% 1% 5%;
+    border-radius:2rem;
+}
+
+
+.fonts{
+    font-size:11px;
+}
+
+
+.buttons a:nth-child(1){
+    border:1px solid #8E24AA !important;
+    color:#8E24AA;
+    height:40px;
+}
+
+.buttons a:nth-child(1):hover{
+    border:1px solid #8E24AA !important;
+    color:#fff;
+    height:40px;
+    background-color:#8E24AA;
+}
+
+.buttons a:nth-child(2){
+    border:1px solid #8E24AA !important;
+    background-color:#8E24AA;
+    color:#fff;
+    height:40px;
+}

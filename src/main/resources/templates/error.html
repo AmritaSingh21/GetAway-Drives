@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Get Away drives</title>
+
+    <link rel="stylesheet" href="" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.8.1/css/all.css}">
+
+    <link rel="stylesheet"
+          th:href="@{https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css}">
+</head>
+<body>
+
+<!-- header -->
+<header id="everything">
+    <a href="/index" class="logo"><img src="" th:src="@{/images/gtr.png}" alt = "logo"></a>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+    <ul class="navbar">
+        <li><a href="/index">Home</a></li>
+    </ul>
+</header>
+
+<section class="home" id="home">
+    <form action="get"  th:action="@{search}" style="width: 70%;">
+        <div class="input-box">
+            <span>Location</span>
+            <input type="search" name="keyword"  placeholder="Enter Location" required>
+        </div>
+        <div class="input-box">
+            <span>Pick-Up Date</span>
+            <input type="date" name="startDate" required>
+        </div>
+        <div class="input-box">
+            <span>Return-Date</span>
+            <input type="date" name="endDate" required>
+        </div>
+        <div class="errors">
+            <p th:text="${err}" style="color: red;font-weight: bold;text-align: center;"></p>
+        </div>
+        <input type="submit" name="" class="btn">
+    </form>
+</section>
+
+<section class="ride" id="ride">
+<h2> 404 PAGE NOT FOUND</h2>
+<h3>Sorry, we couldn't find a page that matches your request.</h3>
+<p>The page you are looking for may have moved, may no longer exist, or you may have entered an incorrect address.
+ Please press home to go back.</p>
+</section>
+
+<div class="copyright" style="position:fixed;bottom: 0">
+    <p >&#169; GetAwayDrives All Rights Reserved.</p>
+    <div class="social" style="position:fixed;right: 2%;">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+    </div>
+</div>
+
+<!-- js  -->
+<script src = "main.js"></script>
+</body>
+</html>

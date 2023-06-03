@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{userDeets.css}">
+    <title>Your Profile</title>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="cls">
+
+        <div class="text-center">
+            <img src="images/u1.png" width="170" class="rounded-circle">
+        </div>
+
+        <div class="text-center mt-3" th:each="p:${user}">
+            <!-- <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span> -->
+            <h5 class="mt-2 mb-0" ></h5>
+            <span th:text="${p.getFirstName()}+' '+${p.getLastName()}"></span>
+            <p th:text="${p.getEmail()}"></p>
+            <div class="px-4 mt-1">
+                <p class="fonts" th:text="'Last Updated on: '+${p.getLastUpdatedOn()}"></p>
+
+            </div>
+
+            <div class="buttons">
+
+                <a th:href="@{logout}" class="btn btn-outline-primary px-4">Sign Out</a>
+                <a th:href="@{editProfile}"class="btn btn-primary px-4 ms-3">Edit Profile</a>
+                <a th:href="@{loggedIn}"class="btn btn-primary px-4 ms-3" style="border:1px solid #8E24AA !important;
+                                                                            background-color:#8E24AA;
+                                                                            color:#fff;
+                                                                            height:40px;">Home</a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+</html>
